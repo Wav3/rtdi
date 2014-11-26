@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name        = 'rtdi'
   s.version     = '1.0'
   s.date        = '2014-11-26'
-  s.executables = %w(dashing)
+  s.executables = %w(rtdi)
 
 
   s.summary      = "Real-Time Dashboard for Icinga"
