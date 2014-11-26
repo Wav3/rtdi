@@ -1,8 +1,6 @@
 # Real Time Dashboard for Icinga (RTDI)
 
 It's a fork from [Dashing](http://github.com/Shopify/dashing).  
-**This project is maintained by [Wav3](https://github.com/Wav3/rtdi)**  
-**This repository is no longer being maintained - Goto Wav3's Fork [here](https://github.com/Wav3/rtdi)**
 
 
 This is an awesome solution to display the most important serverstatus from [icinga](http://icinga.org) in one (or more) dashboards in realtime.  
@@ -49,6 +47,3 @@ To configure rtdi you need to edit `/path/to/project/lib/main.csv` and insert in
 
 Now you should generate a new dashboard with `rtdi generate dashboard DASHBOARD_NAME` and a new job with `rtdi generate job JOB_NAME`.  
 The examples for the dashboard and the job you can find here: `/path/to/project/dashboard/rtdi_sample.erb` and `/path/to/project/jobs/rtdi_sample.rb`
-
-**This project is maintained by [Wav3](https://github.com/Wav3/rtdi)**  
-**This repository is no longer being maintained - Goto Wav3's Fork [here](https://github.com/Wav3/rtdi)**
