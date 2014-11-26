@@ -1,0 +1,16 @@
+0,XenApp,XenApp,service,true,false
+0,XenDesktop,ctxmgt01,servicehost,false,false
+0,Anmeldedauer,login_time,service,false,true
+1,Mail,mail,servicehost,false,false
+1,EGVP,egvp,service,false,false
+1,TK-Anlage,TK-Anlage,service,true,false
+1,LK Website,www.landkreis-lueneburg.de_Startseite,service,false,true
+2,Scan,lklgricoh02,servicehost,false,false
+2,USV,USV,host,true,false
+2,Stromverb.,pdu_activepower,true,true
+2,PUE,energymeter_power,false,true
+3,WAN,WAN,host,true,false
+3,Netzwerk LK,Etagenverteiler,host,true,false
+3,Internet,gw_luenecom_inet,host,false,false
+3,VMWare,VMWare,service,true,false
+3,XenServer,XenServer,service,true,false

@@ -7,50 +7,69 @@
 // ----------------------------------------------------------------------------
 $background-color: #222;
 $text-color: #fff;
-
-$background-warning-color-1: #e82711;
-$background-warning-color-2: #9b2d23;
+$background-warning-color-1: #eeae32;
+$background-warning-color-2: #ff9618;
 $text-warning-color: #fff;
 
-$background-danger-color-1: #eeae32;
-$background-danger-color-2: #ff9618;
+$background-danger-color-1: #b51222;
+$background-danger-color-2: #9b2d23;
 $text-danger-color: #fff;
 
-@-webkit-keyframes status-warning-background {
+$background-unknown-color-1: #ff8000;
+$background-unknown-color-2: #ff8000;
+$text-unknown-color: #fff;
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+/*
+@include keyframes(status-warning-background) {
   0%   { background-color: $background-warning-color-1; }
   50%  { background-color: $background-warning-color-2; }
   100% { background-color: $background-warning-color-1; }
 }
-@-webkit-keyframes status-danger-background {
+
+@include keyframes(status-danger-background) {
   0%   { background-color: $background-danger-color-1; }
   50%  { background-color: $background-danger-color-2; }
   100% { background-color: $background-danger-color-1; }
 }
+*/
 @mixin animation($animation-name, $duration, $function, $animation-iteration-count:""){
   -webkit-animation:  $animation-name $duration $function #{$animation-iteration-count};
   -moz-animation:     $animation-name $duration $function #{$animation-iteration-count};
   -ms-animation:      $animation-name $duration $function #{$animation-iteration-count};
 }
-
 // ----------------------------------------------------------------------------
 // Base styles
 // ----------------------------------------------------------------------------
-html {
-  font-size: 100%;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
+html { 
+  font-size: 120%; 
+  -webkit-text-size-adjust: 100%; 
+  -ms-text-size-adjust: 100%; 
 }
 
-body {
-  margin: 0;
+body { 
+  margin: 0; 
   background-color: $background-color;
-  font-size: 20px;
+  font-size: 30px;
   color: $text-color;
   font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-b, strong {
-  font-weight: bold;
+b, strong { 
+  font-weight: bold; 
 }
 
 a {
@@ -58,18 +77,18 @@ a {
   color: inherit;
 }
 
-img {
-  border: 0;
-  -ms-interpolation-mode: bicubic;
-  vertical-align: middle;
+img { 
+  border: 0; 
+  -ms-interpolation-mode: bicubic; 
+  vertical-align: middle; 
 }
 
-img, object {
-  max-width: 100%;
+img, object { 
+  max-width: 100%; 
 }
 
-iframe {
-  max-width: 100%;
+iframe { 
+  max-width: 100%; 
 }
 
 table {
@@ -82,29 +101,29 @@ td {
   vertical-align: middle;
 }
 
-ul, ol {
-  padding: 0;
-  margin: 0;
+ul, ol { 
+  padding: 0; 
+  margin: 0; 
 }
 
-h1, h2, h3, h4, h5, p {
+h1, h2, h3, h4, h5, p { 
   padding: 0;
-  margin: 0;
+  margin: 0; 
 }
-h1 {
+h1 { 
   margin-bottom: 12px;
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 400;
 }
 h2 {
   text-transform: uppercase;
-  font-size: 76px;
+  font-size: 86px;
   font-weight: 700;
   color: $text-color;
 }
 h3 {
-  font-size: 25px;
+  font-size: 35px;
   font-weight: 600;
   color: $text-color;
 }
@@ -112,22 +131,66 @@ h3 {
 // ----------------------------------------------------------------------------
 // Base widget styles
 // ----------------------------------------------------------------------------
+@media screen and (max-width:768px) {
+  .gridster, .gridster ul { width:100% !important ; position:static !important }
+  .gridster ul li { width:100% !important ; position:relative !important ; top:0 !important ; left:0 !important ; overflow:hidden ; display:table ; height:400px }
+}
 .gridster {
   margin: 0px auto;
 }
 
 .icon-background {
-  pointer-events: none;
   width: 100%!important;
   height: 100%;
   position: absolute;
   left: 0;
-  top: 0;
+  top: 0px;
+//  top: 34px; 
   opacity: 0.1;
-  font-size: 275px;
-  text-align: center;
-  margin-top: 82px;
+  font-size: 285px;
 }
+
+.icon-background1 {
+  width: 100%!important;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  opacity: 0.1;
+  font-size: 285px;
+}
+
+.icon-ticketsdown {
+  width: 100%!important;
+  height: 100%;
+  position: absolute;
+  left: -8px;
+  top: -61px;
+  opacity: 0.1;
+  font-size: 134px;
+}
+
+.icon-ticketsup {
+  width: 100%!important;
+  height: 100%;
+  position: absolute;
+  left: -8px;
+  top: -34px;
+  opacity: 0.1;
+  font-size: 134px;
+}
+
+.icon-mini {
+  width: 100%!important;
+  height: 100%;
+  position: absolute;
+  left: -8px;
+  top: -34px;
+  opacity: 0.1;
+  font-size: 134px;
+}
+
+
 
 .list-nostyle {
   list-style: none;
@@ -153,9 +216,8 @@ h3 {
 
 .widget.status-warning {
   background-color: $background-warning-color-1;
-  @include animation(status-warning-background, 2s, ease, infinite);
 
-  .icon-warning-sign {
+  .icon-warning-sign { 
     display: inline-block;
   }
 
@@ -165,11 +227,9 @@ h3 {
 }
 
 .widget.status-danger {
-  color: $text-danger-color;
   background-color: $background-danger-color-1;
-  @include animation(status-danger-background, 2s, ease, infinite);
 
-  .icon-warning-sign {
+  .icon-warning-sign { 
     display: inline-block;
   }
 
@@ -177,9 +237,33 @@ h3 {
     color: $text-danger-color;
   }
 }
+.widget.status-unknown {
+  background-color: $background-unknown-color-1;
+
+  .icon-warning-sign {
+    display: inline-block;
+  }
+
+  .title, .more-info {
+    color: $text-unknown-color;
+  }
+}
+.widget.status-unknownack {
+//  background-color: $background-unknown-color-1;
+//  background-color: $background-color;
+}
+.widget.status-warningack {
+//  background-color: $background-warning-color-1;
+//  background-color: $background-color;
+}
+
+.widget.status-criticalack {
+//  background-color: $background-danger-color-1;
+//  background-color: $background-color;
+}
 
 .more-info {
-  font-size: 15px;
+  font-size: 35px;
   position: absolute;
   bottom: 32px;
   left: 0;
@@ -187,7 +271,7 @@ h3 {
 }
 
 .updated-at {
-  font-size: 15px;
+  font-size: 25px;
   position: absolute;
   bottom: 12px;
   left: 0;
