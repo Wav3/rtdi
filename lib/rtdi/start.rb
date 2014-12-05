@@ -163,7 +163,7 @@ module RTDI
         end
       elsif tval.length == 1
 	    if tval.class.to_s == "Array"
-		  tval = tval[0]
+		  tval = tval[0].round 2
 		end
         values = Status.raw(values,tlab[i],[tval,tstat[i]])
       end
