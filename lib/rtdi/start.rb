@@ -41,7 +41,7 @@ module RTDI
 
     private
 
-    def to_bool(str)
+    def self.to_bool(str)
       if str == "false"
         res = false
       elsif str == "true"
@@ -50,7 +50,7 @@ module RTDI
       return res
     end
 
-    def obj_data(objects)
+    def self.obj_data(objects)
       # Aufbau des Array
       # objects = [ ["Kachelnr","Realer Name","Objektname in Icinga","Typ (Service|Host)","Objekt ist eine Gruppe (Boolean)","Perfomancedaten (Boolean)","Suffix (String)" ], [  ], [  ] ]
       labels = []
@@ -108,7 +108,7 @@ module RTDI
       return newval, status
     end
 
-    def kpoints(value)
+    def self.kpoints(value)
       if value.to_f >= 100000.0
         value = value.to_s.insert(3, ".")
       elsif value.to_f >= 10000.0
@@ -119,7 +119,7 @@ module RTDI
       return value.to_s
     end
 
-    def prepare_data(values,labels,raw_val,sfx)
+    def self.prepare_data(values,labels,raw_val,sfx)
       i = 0
       tval = []
       tlab = []
