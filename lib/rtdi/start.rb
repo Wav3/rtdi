@@ -158,8 +158,8 @@ module RTDI
       i = 0
       if tval.length > 1
         tval.each do |z|
-		  if tlab.class.to_s == "Array"
-			if tlab.length == 1
+		  if tlab[i].class.to_s == "Array"
+			if tlab[i].length == 1
 			  tlab[i] = tlab[i][0]
 			end
 		  end
