@@ -158,6 +158,11 @@ module RTDI
       i = 0
       if tval.length > 1
         tval.each do |z|
+		  if tlab.class.to_s = "Array"
+			if tlab.length == 1
+			  tlab[i] = tlab[i][0]
+			end
+		  end
           values = Status.raw(values,tlab[i],[z,tstat[i]])
           i += 1
         end
