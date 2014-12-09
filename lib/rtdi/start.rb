@@ -64,6 +64,7 @@ module RTDI
       prev_nr = 0
       y = 0
       suffix = []
+      suffix << []
       labels << []
       values << []
       raw_val << []
@@ -72,6 +73,7 @@ module RTDI
           labels << []
           values << []
           raw_val << []
+          suffix << []
         end
         prev_nr = objects[y][0]
         y += 1
@@ -83,7 +85,7 @@ module RTDI
         type = item[3]
         group = item[4]
         raw = item[5]
-        suffix << item[6]
+        suffix[position] << item[6]
         if raw == false
           values[position] << Status.getstate(obj_name,type,group)
           raw_val[position] << false
@@ -95,7 +97,7 @@ module RTDI
       newval = []
       i = 0
       values.each do |item|
-        newval << prepare_data(item,labels[i],raw_val[i],suffix)
+        newval << prepare_data(item,labels[i],raw_val[i],suffix[i])
         i += 1
       end
       status = []
@@ -109,12 +111,13 @@ module RTDI
     end
 
     def self.kpoints(value)
-      if value.to_f >= 100000.0
-        value = value.to_s.insert(3, ".")
-      elsif value.to_f >= 10000.0
-        value = value.to_s.insert(2, ".")
-      elsif value.to_f >= 1000.0
-        value = value.to_s.insert(1, ".")
+      value = value.to_f.round 2
+      if value >= 100000.0
+        value = value.to_s.insert(3, ",")
+      elsif value >= 10000.0
+        value = value.to_s.insert(2, ",")
+      elsif value >= 1000.0
+        value = value.to_s.insert(1, ",")
       end
       return value.to_s
     end
@@ -134,7 +137,8 @@ module RTDI
               if c.class.to_s == "String"
                 tstat << kpoints(c)
               else
-                z = z + c[0] + " "
+                c[0] = c[0].gsub(/,/, ".")
+                z = z + kpoints(c[0]) + " "
               end
             end
             x = z

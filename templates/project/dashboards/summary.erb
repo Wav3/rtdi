@@ -1,0 +1,19 @@
+<script type='text/javascript'>
+$(function() {
+$('li').live('click', function(e){
+window.location = $(this).find('.widget').data('url');
+});
+});
+</script>
+ 
+<% content_for :title do %>Summary<% end %>
+<div class='gridster'>
+<ul>
+<% Dir.glob("./dashboards/*").reject {|f| f.match 'layout|summary' }.each_with_index do |d,i| %>
+<% name = d.match(/\.\/dashboards\/(.*)\.erb/)[1] %>
+<li data-row='1' data-col="<%= i+1 %>" data-sizex='1' data-sizey='1'>
+<div data-view='Text' data-title="<%= name.upcase %>" data-url="/<%= name %>"></div>
+</li>
+<% end %>
+</ul>
+</div>

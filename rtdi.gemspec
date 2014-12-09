@@ -2,8 +2,8 @@
 
 Gem::Specification.new do |s|
   s.name        = 'rtdi'
-  s.version     = '1.0'
-  s.date        = '2014-11-26'
+  s.version     = '1.0.1'
+  s.date        = '2014-12-09'
   s.executables = %w(rtdi)
 
 
