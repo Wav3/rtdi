@@ -157,8 +157,8 @@ module RTDI
       if tmpval.length > 0
         values = tmpval
         labels = tmplab
-      end
       values = Status.prepare(labels,values)
+      end
       i = 0
       if tval.length > 1
         tval.each do |z|
@@ -166,9 +166,9 @@ module RTDI
           i += 1
         end
       elsif tval.length == 1
-	    if tval.class.to_s == "Array"
-		  tval = tval[0].round 2
-		end
+	      if tval.class.to_s == "Array"
+		      tval = tval[0].to_f.round 2
+		    end
         values = Status.raw(values,tlab[i],[tval,tstat[i]])
       end
       return values

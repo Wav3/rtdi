@@ -446,7 +446,12 @@ module RTDI
         end
         res = res.split(";")
         state = res[0]
-        res = res[1].scan(/[=]([0-9]+[.,]?[0-9]+)/)
+        res = res[1].scan(/[=]([0-9]+[.]?[0-9]*)/)
+        #test
+        if extname[2] != nil
+          res = [res[extname[2].to_i]]
+        end
+        #end test
         #res[0] = res[1].split(/[=]([0-9]+[.,]?[0-9]+)/)
         res << state
       rescue Exception => e
