@@ -4,6 +4,7 @@ require 'dashing'
 configure do
   set :auth_token, 'YOUR_AUTH_TOKEN'
   set :default_dashboard, 'rtdi_sample'
+  set :livestatus_path, 'ip:port or unix/path'
   helpers do
     def protected!
      # Put any authentication code you want in here.

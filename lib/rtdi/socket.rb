@@ -1,8 +1,8 @@
 module RTDI
   class IDSocket
-
+    set :livestatus_path, nil
     require 'socket'
-
+    require 'ipaddress'
     def self.request(type,columns=nil,filter=nil,extfilter=nil)
       query = "GET #{type.to_s}\n"
       if columns != nil
@@ -30,9 +30,17 @@ module RTDI
     end
 
     private
-
+    
+    def self.path_is_ip(ls_path)
+      is_ip = IPAddress.valid? ls_path
+      return is_ip
+    end
     def self.connect()
-      socket = UNIXSocket.open("/var/lib/icinga/rw/live")
+      if path_is_ip(settings.livestatus_path)
+        socket = TCPSocket.open(settings.livestatus_path.split(":")[0],settings.livestatus_path.split(":")[1])
+      else
+        socket = UNIXSocket.open("/var/lib/icinga/rw/live")
+      end
       return socket
     end
   end
